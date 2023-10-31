@@ -51,17 +51,16 @@ public class EstacionServiceImpl implements EstacionService {
 
         Estacion estacionOrigen = estacionRep.findById(idInicio).orElseThrow(()-> new InvalidRequestException("No se ha encontrado la estacion con ID: " + idInicio));
         Estacion estacionDestino = estacionRep.findById(idFin).orElseThrow(()-> new InvalidRequestException("No se ha encontrado la estacion con ID: " + idInicio));
-
         Double distanciaMetros = calcularDistanciaMetros(estacionOrigen.getLatitud(), estacionOrigen.getLongitud(), estacionDestino.getLatitud(), estacionDestino.getLongitud());
         return distanciaMetros;
-
-
 
     }
 
     @Override
     public EstacionResponseDTO getClosestStation(Double latitud, Double longitud) {
-        return null;
+        List<Estacion> estacion = estacionRep.findEstacionesOrdenadas(latitud, longitud);
+        return estacionResponseMapper.apply(estacion.get(0));
+
     }
 
 

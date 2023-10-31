@@ -6,9 +6,7 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import utn.frc.utn.edu.ar.estaciones_api.controller.request.CreateEstacionRequestDTO;
-import utn.frc.utn.edu.ar.estaciones_api.controller.request.GetClosestEstacionDTO;
 import utn.frc.utn.edu.ar.estaciones_api.controller.response.EstacionResponseDTO;
-import utn.frc.utn.edu.ar.estaciones_api.domain.Estacion;
 import utn.frc.utn.edu.ar.estaciones_api.service.interfaces.EstacionService;
 
 import java.util.List;
@@ -45,9 +43,9 @@ public class EstacionController {
     }
 
     @GetMapping("/closest")
-    public ResponseEntity<EstacionResponseDTO> getClosestEstacion(@RequestBody GetClosestEstacionDTO dto) {
+    public ResponseEntity<EstacionResponseDTO> getClosestEstacion(@RequestParam("latitud") Double latitud, @RequestParam("longitud") Double longitud) {
 
-        EstacionResponseDTO response = estacionService.getClosestStation(dto.getLatitud(), dto.getLongitud());
+        EstacionResponseDTO response = estacionService.getClosestStation((double) latitud, latitud);
         return new ResponseEntity<EstacionResponseDTO>(response, HttpStatusCode.valueOf(200));
 
     }
