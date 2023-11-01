@@ -5,7 +5,7 @@ import Controller.Response.AlquilerResponseDto;
 import entidades.Alquiler;
 import java.util.function.Function;
 
-public class AlquilerResponseMappers implements Function<Alquiler, AlquilerResponseDto> {
+public class AlquilerResponseMapper implements Function<Alquiler, AlquilerResponseDto> {
     @Override
     public AlquilerResponseDto apply(Alquiler alquiler) {
         return new AlquilerResponseDto(alquiler.getId(),

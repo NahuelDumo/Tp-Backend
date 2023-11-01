@@ -17,7 +17,7 @@ public class AlquilerResponseDto {
     private Long estacionRetiro;
     private LocalDateTime fechaHoraRetiro;
     private LocalDateTime fechaHoraDevolucion;
-    private Long monto;
+    private Float monto;
     private Long idTarifa;
 
 }

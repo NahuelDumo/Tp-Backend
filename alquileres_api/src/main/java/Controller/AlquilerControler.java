@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class AlquilerControler {
     private AlquilerService alquilerService;
+
     @PostMapping()
     public ResponseEntity<AlquilerResponseDto> add(@RequestBody AlquilerRequestDto dto) {
         AlquilerResponseDto response = alquilerService.add(dto.getIdEstacion(), dto.getIdCliente());

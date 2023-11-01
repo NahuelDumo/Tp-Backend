@@ -1,9 +1,6 @@
 package entidades;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,29 +15,55 @@ import java.time.LocalDateTime;
 @Table(name = "Alquileres")
 public class Alquiler {
     @Id
-    @Column(name = "Id")
+    @GeneratedValue(generator = "ALQUILERES")
+    @TableGenerator(name = "ALQUILERES", table = "sqlite_sequence",
+            pkColumnName = "name", valueColumnName = "seq",
+            pkColumnValue="ALQUILERES",
+            initialValue=1, allocationSize=1)
+    @Column(name = "ID")
+    private Long id;
 
-    private long id;
+    @Column(name = "ID_CLIENTE")
+    private Long idCliente;
 
-    @Column(name = "Estado")
-    private long idCliente;
+    @Column(name = "ESTADO")
+    private Long estado;
 
-    @Column(name = "Estacion_Retiro")
-    private long estado;
+    @Column(name = "ESTACION_RETIRO")
+    private Long estacionRetiro;
 
-    @Column(name = "Estacion_Devolucion")
-    private long estacionRetiro;
+    @Column(name = "ESTACION_DEVOLUCION", nullable = true)
+    private Long estacionDevolucion;
 
-    @Column(name = "Fecha_Hora_Retiro")
+    @Column(name = "FECHA_HORA_RETIRO")
     private LocalDateTime fechaHoraRetiro;
 
-    @Column(name = "Fecha_Hora_Devolucion")
+    @Column(name = "FECHA_HORA_DEVOLUCION", nullable = true)
     private LocalDateTime fechaHoraDevolucion;
 
     @Column(name = "Monto")
-    private long monto;
+    private Float monto;
 
-    @Column(name = "Id_Tarifa")
-    private long idTarifa;
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name="ID_TARIFA", referencedColumnName = "ID")
+    private Tarifa tarifa;
 
+    public Alquiler(long idCliente, long estado,
+                    long estacionRetiro,
+                    LocalDateTime fechaHoraRetiro,
+                    Tarifa tarifa) {
+
+        this.idCliente = idCliente;
+        this.estado = estado;
+        this.estacionRetiro = estacionRetiro;
+        this.estacionDevolucion = null;
+        this.fechaHoraRetiro = fechaHoraRetiro;
+        this.fechaHoraDevolucion = null;
+        this.monto = 0f;
+        this.tarifa = tarifa;
+    }
+
+    public Long getIdTarifa() {
+        return tarifa.getId();
+    }
 }

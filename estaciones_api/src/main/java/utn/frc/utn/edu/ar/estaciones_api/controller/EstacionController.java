@@ -42,11 +42,19 @@ public class EstacionController {
         return new ResponseEntity<Boolean>(response, HttpStatusCode.valueOf(200));
     }
 
-    @GetMapping("/closest")
+    @GetMapping("/")
     public ResponseEntity<Double> getDistanceBetweenStations(@RequestParam("idEstacionOrigen") Long idEstacionOrigen, @RequestParam("idEstacionDestino") Long idEstacionDestino) {
 
         Double response = estacionService.getDistanceBetweenStations(idEstacionOrigen, idEstacionDestino);
         return new ResponseEntity<Double>(response, HttpStatusCode.valueOf(200));
+
+    }
+
+    @GetMapping("/closest")
+    public ResponseEntity<EstacionResponseDTO> getClosestStation(@RequestParam("latitud") Double latitud, @RequestParam("longitud") Double longitud) {
+
+        EstacionResponseDTO response = estacionService.getClosestStation(latitud, longitud);
+        return new ResponseEntity<EstacionResponseDTO>(response, HttpStatusCode.valueOf(200));
 
     }
 
