@@ -1,4 +1,4 @@
-package entidades;
+package utn.frc.utn.edu.ar.alquileres_api.entidades;
 
 
 import jakarta.persistence.*;
@@ -20,37 +20,37 @@ public class Tarifa {
             pkColumnName = "name", valueColumnName = "seq",
             pkColumnValue="Tarifas", initialValue = 1, allocationSize = 1)
 
-    private long id;
+    private Long id;
 
     @Column(name = "TIPO_TARIFA")
-    private long tipoTarifa;
+    private Long tipoTarifa;
 
     @Column(name = "Definicion")
     private char definicion ;
 
-    @Column(name = "DIA_SEMANA")
-    private int diaSemana;
+    @Column(name = "DIA_SEMANA", nullable = true)
+    private Integer diaSemana;
 
-    @Column(name = "DIA_MES")
-    private int diaMes;
+    @Column(name = "DIA_MES", nullable = true)
+    private Integer diaMes;
 
-    @Column(name = "MES")
-    private int mes;
+    @Column(name = "MES", nullable = true)
+    private Integer mes;
 
-    @Column(name = "ANIO")
-    private int anio;
+    @Column(name = "ANIO", nullable = true)
+    private Integer anio;
 
     @Column(name = "MONTO_FIJO_ALQUILER")
-    private int montoFijoAlquiler;
+    private Integer montoFijoAlquiler;
 
     @Column(name = "MONTO_MINUTO_FRACCION")
-    private float montoMinutoFraccion;
+    private Float montoMinutoFraccion;
 
     @Column(name = "MONTO_KM")
-    private float montoKM;
+    private Float montoKM;
 
     @Column(name = "MONTO_HORA")
-    private float montoHora;
+    private Float montoHora;
 
 
 

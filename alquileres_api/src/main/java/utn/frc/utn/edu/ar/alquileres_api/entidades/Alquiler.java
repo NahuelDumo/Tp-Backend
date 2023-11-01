@@ -1,10 +1,9 @@
-package entidades;
+package utn.frc.utn.edu.ar.alquileres_api.entidades;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -19,7 +18,7 @@ public class Alquiler {
     @TableGenerator(name = "ALQUILERES", table = "sqlite_sequence",
             pkColumnName = "name", valueColumnName = "seq",
             pkColumnValue="ALQUILERES",
-            initialValue=1, allocationSize=1)
+            initialValue=0, allocationSize=1)
     @Column(name = "ID")
     private Long id;
 

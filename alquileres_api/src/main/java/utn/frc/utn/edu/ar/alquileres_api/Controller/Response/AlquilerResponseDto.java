@@ -1,4 +1,4 @@
-package Controller.Response;
+package utn.frc.utn.edu.ar.alquileres_api.Controller.Response;
 
 
 import lombok.AllArgsConstructor;

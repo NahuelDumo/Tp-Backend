@@ -1,7 +1,7 @@
-package Controller;
+package utn.frc.utn.edu.ar.alquileres_api.Controller;
 
-import exceptions.InvalidRequestException;
-import exceptions.ResourceNotFoundException;
+import utn.frc.utn.edu.ar.alquileres_api.exceptions.InvalidRequestException;
+import utn.frc.utn.edu.ar.alquileres_api.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -23,8 +23,9 @@ public class GlobalExceptionController {
 
     @ExceptionHandler(HttpClientErrorException.class)
     public ResponseEntity<String> handleInvalidHTTPRequest(HttpClientErrorException ex) {
-        return new ResponseEntity<String>(ex.getMessage(), HttpStatusCode.valueOf(404));
+        return new ResponseEntity<String>(ex.getMessage(), HttpStatusCode.valueOf(500));
     }
+
 
 
 }

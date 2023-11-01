@@ -1,21 +1,20 @@
-package Services;
+package utn.frc.utn.edu.ar.alquileres_api.Services;
 
-import Controller.Response.AlquilerResponseDto;
-import Services.Mappers.AlquilerResponseMapper;
-import entidades.Alquiler;
-import entidades.Tarifa;
-import exceptions.ResourceNotFoundException;
+import utn.frc.utn.edu.ar.alquileres_api.Controller.Response.AlquilerResponseDto;
+import utn.frc.utn.edu.ar.alquileres_api.Services.Mappers.AlquilerResponseMapper;
+import utn.frc.utn.edu.ar.alquileres_api.entidades.Alquiler;
+import utn.frc.utn.edu.ar.alquileres_api.entidades.Tarifa;
+import utn.frc.utn.edu.ar.alquileres_api.exceptions.ResourceNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import repositories.AlquilerRepository;
-import repositories.TarifaRepository;
+import utn.frc.utn.edu.ar.alquileres_api.repositories.AlquilerRepository;
+import utn.frc.utn.edu.ar.alquileres_api.repositories.TarifaRepository;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Optional;
 
 
 @Service

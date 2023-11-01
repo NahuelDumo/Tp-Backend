@@ -1,4 +1,4 @@
-package exceptions;
+package utn.frc.utn.edu.ar.alquileres_api.exceptions;
 
 public class InvalidRequestException extends RuntimeException {
 

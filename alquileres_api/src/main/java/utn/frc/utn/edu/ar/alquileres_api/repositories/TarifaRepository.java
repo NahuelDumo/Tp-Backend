@@ -1,6 +1,6 @@
-package repositories;
+package utn.frc.utn.edu.ar.alquileres_api.repositories;
 
-import entidades.Tarifa;
+import utn.frc.utn.edu.ar.alquileres_api.entidades.Tarifa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

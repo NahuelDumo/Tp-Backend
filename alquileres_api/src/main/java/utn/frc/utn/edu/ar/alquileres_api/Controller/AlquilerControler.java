@@ -1,8 +1,8 @@
-package Controller;
+package utn.frc.utn.edu.ar.alquileres_api.Controller;
 
-import Controller.Request.AlquilerRequestDto;
-import Controller.Response.AlquilerResponseDto;
-import Services.AlquilerService;
+import utn.frc.utn.edu.ar.alquileres_api.Controller.Request.AlquilerRequestDto;
+import utn.frc.utn.edu.ar.alquileres_api.Controller.Response.AlquilerResponseDto;
+import utn.frc.utn.edu.ar.alquileres_api.Services.AlquilerService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;

@@ -1,10 +1,13 @@
-package Services.Mappers;
+package utn.frc.utn.edu.ar.alquileres_api.Services.Mappers;
 
 
-import Controller.Response.AlquilerResponseDto;
-import entidades.Alquiler;
+import org.springframework.stereotype.Service;
+import utn.frc.utn.edu.ar.alquileres_api.Controller.Response.AlquilerResponseDto;
+import utn.frc.utn.edu.ar.alquileres_api.entidades.Alquiler;
+
 import java.util.function.Function;
 
+@Service
 public class AlquilerResponseMapper implements Function<Alquiler, AlquilerResponseDto> {
     @Override
     public AlquilerResponseDto apply(Alquiler alquiler) {
