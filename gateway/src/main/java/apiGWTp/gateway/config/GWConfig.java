@@ -38,13 +38,13 @@ public class GWConfig {
         http.authorizeExchange(exchanges -> exchanges
 
                         //seguridad para alquileres
-                        .pathMatchers(HttpMethod.POST,"/api/alquileres/**").hasRole("CLIENTES")
-                        .pathMatchers(HttpMethod.PATCH,"/api/alquileres/**").hasRole("CLIENTES")
-                        .pathMatchers(HttpMethod.GET,"/api/alquileres/**").hasRole("ADMINISTRADORES")
+                        .pathMatchers(HttpMethod.POST,"/api/alquileres/**").hasRole("CLIENTE")
+                        .pathMatchers(HttpMethod.PATCH,"/api/alquileres/**").hasRole("CLIENTE")
+                        .pathMatchers(HttpMethod.GET,"/api/alquileres/**").hasRole("ADMINISTRADOR")
 
                         //seguridad para estaciones
-                        .pathMatchers(HttpMethod.GET,"/api/estaciones").hasRole("CLIENTES")
-                        .pathMatchers(HttpMethod.POST,"/api/estaciones").hasRole("ADMINISTRADORES")
+                        .pathMatchers(HttpMethod.GET,"/api/estaciones").hasRole("CLIENTE")
+                        .pathMatchers(HttpMethod.POST,"/api/estaciones").hasRole("ADMINISTRADOR")
 
                         // Cualquier otra petición...
                         .anyExchange().authenticated()
