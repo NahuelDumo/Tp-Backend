@@ -43,11 +43,10 @@ public class GWConfig {
                         .pathMatchers(HttpMethod.GET,"/api/alquileres/**").hasRole("ADMINISTRADOR")
 
                         //seguridad para estaciones
-                        .pathMatchers(HttpMethod.GET,"/api/estaciones").hasRole("CLIENTE")
+                        .pathMatchers(HttpMethod.GET,"/api/estaciones/**").hasRole("CLIENTE")
                         .pathMatchers(HttpMethod.POST,"/api/estaciones").hasRole("ADMINISTRADOR")
-
                         // Cualquier otra petición...
-                        .anyExchange().authenticated()
+                        .anyExchange().permitAll()
 
                 ).oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
                 .csrf(csrf -> csrf.disable());
