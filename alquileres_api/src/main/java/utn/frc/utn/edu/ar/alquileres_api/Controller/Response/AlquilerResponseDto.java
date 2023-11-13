@@ -13,8 +13,9 @@ import java.time.LocalDateTime;
 public class AlquilerResponseDto {
     private Long Id;
     private Long idCliente;
-    private Long estado;
+    private int estado;
     private Long estacionRetiro;
+    private Long estacionDevolucion;
     private LocalDateTime fechaHoraRetiro;
     private LocalDateTime fechaHoraDevolucion;
     private Float monto;

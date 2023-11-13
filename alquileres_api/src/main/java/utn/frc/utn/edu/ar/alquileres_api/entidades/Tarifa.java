@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.Duration;
+
 
 @Data
 @AllArgsConstructor
@@ -13,6 +15,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "Tarifas")
 public class Tarifa {
+
     @Id
     @Column(name = "Id")
     @GeneratedValue(generator = "Tarifas")
@@ -52,6 +55,20 @@ public class Tarifa {
     @Column(name = "MONTO_HORA")
     private Float montoHora;
 
+    public Float calcularCosto(Double distanciaMetros, Duration duration) {
+        long durationHoras = Math.round(duration.toHours());
+        long durationMinutes = 0;
+        if(duration.toMinutesPart() > 30) {
+           durationHoras += 1;
 
+        }
+        else{
+             durationMinutes = duration.toMinutesPart();
+        }
+
+        Float costo = (float) (getMontoFijoAlquiler() + (montoHora * durationHoras) + (durationMinutes * montoMinutoFraccion)+(montoKM * (distanciaMetros/1000)));
+
+        return costo;
+    }
 
 }

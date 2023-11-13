@@ -72,13 +72,13 @@ public class EstacionServiceImpl implements EstacionService {
 
     private Double calcularDistanciaMetros(Double latitudInicio, Double longitudInicio, Double latitudFin, Double longitudFin) {
 
-        Double longDistancia = longitudFin - longitudInicio;
-        Double latDistancia = latitudFin - latitudInicio;
-        Double gradosDistancia =  (Math.sqrt(Math.pow(longDistancia,2) + Math.pow(latDistancia, 2)));
+    Double longDistancia = longitudFin - longitudInicio;
+    Double latDistancia = latitudFin - latitudInicio;
+    Double gradosDistancia =  (Math.sqrt(Math.pow(longDistancia,2) + Math.pow(latDistancia, 2)));
 
         return gradosDistancia * 110000;
 
 
-    }
+}
 
 }

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Data
@@ -26,7 +27,7 @@ public class Alquiler {
     private Long idCliente;
 
     @Column(name = "ESTADO")
-    private Long estado;
+    private int estado;
 
     @Column(name = "ESTACION_RETIRO")
     private Long estacionRetiro;
@@ -47,7 +48,7 @@ public class Alquiler {
     @JoinColumn(name="ID_TARIFA", referencedColumnName = "ID")
     private Tarifa tarifa;
 
-    public Alquiler(long idCliente, long estado,
+    public Alquiler(long idCliente, int estado,
                     long estacionRetiro,
                     LocalDateTime fechaHoraRetiro,
                     Tarifa tarifa) {
@@ -64,5 +65,18 @@ public class Alquiler {
 
     public Long getIdTarifa() {
         return tarifa.getId();
+    }
+
+    public Float calcularCosto(Double distanciaMetros, LocalDateTime fechaHoraActual) {
+        Duration tiempoAlquiler = Duration.between(fechaHoraRetiro, fechaHoraActual);
+        return tarifa.calcularCosto(distanciaMetros, tiempoAlquiler);
+
+    }
+
+    public void finalizar(Long idEstacion, Float costoTotal, LocalDateTime fechaHoraActual) {
+        this.setEstacionDevolucion(idEstacion);
+        this.setMonto(costoTotal);
+        this.setFechaHoraDevolucion(fechaHoraActual);
+        this.estado = 2;
     }
 }

@@ -15,6 +15,7 @@ public class AlquilerResponseMapper implements Function<Alquiler, AlquilerRespon
                 alquiler.getIdCliente(),
                 alquiler.getEstado(),
                 alquiler.getEstacionRetiro(),
+                alquiler.getEstacionDevolucion(),
                 alquiler.getFechaHoraRetiro(),
                 alquiler.getFechaHoraDevolucion(),
                 alquiler.getMonto(),
