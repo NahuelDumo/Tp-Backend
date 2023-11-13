@@ -35,8 +35,8 @@ public class AlquilerControler {
     @GetMapping()
     public ResponseEntity<List<AlquilerResponseDto>> AlquilerFiltrado(@RequestParam Float costo){
         List<AlquilerResponseDto> response = alquilerService.alquilerFiltroCosto(costo);
-        if (response.isEmpty())return new ResponseEntity<List<AlquilerResponseDto>>(response, HttpStatusCode.valueOf(200));
-        return new ResponseEntity<List<AlquilerResponseDto>>(response, HttpStatusCode.valueOf(201));
+        if(response.isEmpty())return new ResponseEntity<List<AlquilerResponseDto>>(response, HttpStatusCode.valueOf(204));
+        return new ResponseEntity<List<AlquilerResponseDto>>(response, HttpStatusCode.valueOf(200));
 
     }
 
