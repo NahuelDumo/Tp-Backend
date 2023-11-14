@@ -1,0 +1,256 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8083
+    description: Generated server url
+security:
+  - OAuth2:
+    - tpi-scope
+paths:
+  /api/estaciones:
+    get:
+      summary: Devuelve un listado de todas las estaciones
+      tags:
+        - estaciones
+      operationId: getAll
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EstacionResponseDTO'
+    post:
+      summary: Permite la creacion de una nueva estacion.
+      tags:
+        - estaciones
+      operationId: addEstacion
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEstacionRequestDTO'
+        required: true
+      responses:
+        '201':
+          description: Estacion agregada
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/EstacionResponseDTO'
+                
+        '400':
+          description: Peticion invalida
+          content:
+            text/plain:
+                schema:
+                  type: string
+                  example: Los valores de latitud son invalidos.
+
+  /api/estaciones/closest:
+
+    get:
+      summary: Devuelve la estacion mas cercana, dado una latitud y una longitud
+      tags:
+        - estaciones
+      operationId: getClosestStation
+      parameters:
+        - name: latitud
+          in: query
+          required: true
+          schema:
+            type: number
+            format: double
+        - name: longitud
+          in: query
+          required: true
+          schema:
+            type: number
+            format: double
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/EstacionResponseDTO'
+  
+  /api/alquileres:
+    get:
+      tags:
+        - alquileres
+      operationId: AlquilerFiltrado
+      summary: Devuelve todos los alquileres, mayores al costo pasado por parametro
+      parameters:
+        - name: costo
+          in: query
+          required: true
+          schema:
+            type: number
+            format: float
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AlquilerResponseDto'
+    post:
+      summary: "Permite la creacion de un nuevo alquiler."
+      tags:
+        - alquileres
+      operationId: addAlquiler
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlquilerRequestDto'
+        required: true
+      responses:
+        '201':
+          description: Alquiler añadido
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AlquilerResponseDto'
+        '404':
+          description: No se encontro la estacion correspondiente.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: La estacion con ID X no existe.
+    patch:
+      summary: Finaliza un alquiler, dado una estacion destino, y el tipo de moneda deseado.
+      tags:
+        - alquileres
+      operationId: finalizarAlquiler
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlquilerPatchDto'
+        required: true
+      responses:
+        '200':
+          description: Se ha finalizado el alquiler correspondiente
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AlquilerResponseDto'
+        
+        '404':
+          description: No se ha encontrado el alquiler sin finalizar, o la estacion destino no se ha encontrado.
+          content:
+              text/plain:
+                schema:
+                  type: string
+                  example: El alquiler con ID X no existe.
+                  
+        '400':
+          description: La moneda ingresada no es valida.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: La moneda ARG no es valida.
+          
+          
+          
+  
+  
+components:
+  schemas:
+    CreateEstacionRequestDTO:
+      type: object
+      properties:
+        nombre:
+          type: string
+        latitud:
+          type: number
+          format: double
+        longitud:
+          type: number
+          format: double
+    EstacionResponseDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nombre:
+          type: string
+        fechaHoraCreacion:
+          type: string
+          format: date-time
+        latitud:
+          type: number
+          format: double
+        longitud:
+          type: number
+          format: double
+    AlquilerRequestDto:
+      type: object
+      properties:
+        idCliente:
+          type: integer
+          format: int64
+        idEstacion:
+          type: integer
+          format: int64
+    AlquilerResponseDto:
+      type: object
+      properties:
+        idCliente:
+          type: integer
+          format: int64
+        estado:
+          type: integer
+          format: int32
+        estacionRetiro:
+          type: integer
+          format: int64
+        estacionDevolucion:
+          type: integer
+          format: int64
+        fechaHoraRetiro:
+          type: string
+          format: date-time
+        fechaHoraDevolucion:
+          type: string
+          format: date-time
+        monto:
+          type: number
+          format: float
+        idTarifa:
+          type: integer
+          format: int64
+        id:
+          type: integer
+          format: int64
+    AlquilerPatchDto:
+      type: object
+      properties:
+        idAlquiler:
+          type: integer
+          format: int64
+        idEstacion:
+          type: integer
+          format: int64
+        tipoMoneda:
+          type: string
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://labsys.frc.utn.edu.ar/aim/realms/backend-tps/protocol/openid-connect/auth
+          tokenUrl: https://labsys.frc.utn.edu.ar/aim/realms/backend-tps/protocol/openid-connect/token
+          scopes:
+            tpi-scope: ""

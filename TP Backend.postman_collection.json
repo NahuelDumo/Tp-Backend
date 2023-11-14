@@ -1,0 +1,250 @@
+{
+	"info": {
+		"_postman_id": "3a362289-b5ea-4af7-bb42-55a73f01a604",
+		"name": "TP Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26976847"
+	},
+	"item": [
+		{
+			"name": "estaciones",
+			"item": [
+				{
+					"name": "Estaciones",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJVcExod3d4cWk2QnRYSWpaMjNZeEtjUmp6U1MwTC1pNGRjWVh6cWl6MVhrIn0.eyJleHAiOjE2OTk5MTkyMDcsImlhdCI6MTY5OTkxODkwNywiYXV0aF90aW1lIjoxNjk5OTE4MzgwLCJqdGkiOiJjNGY0MGY5Zi04ZGVlLTRkMjUtOTJkZC1hMDBhNzkxMGJmZTAiLCJpc3MiOiJodHRwczovL2xhYnN5cy5mcmMudXRuLmVkdS5hci9haW0vcmVhbG1zL2JhY2tlbmQtdHBzIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6ImM5OTg0MmYwLWY1YWYtNGJjZS05ZjQ1LTYyMWRkYjk2NTlkNCIsInR5cCI6IkJlYXJlciIsImF6cCI6ImNsaWVudGUtdHBpIiwic2Vzc2lvbl9zdGF0ZSI6IjkzODIwMWNkLTVkYmMtNGI2ZC04YThjLTZhMTNhZWI5NzgwMSIsImFjciI6IjAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy1iYWNrZW5kLXRwcyIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJDTElFTlRFIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJ0cGktc2NvcGUgZW1haWwgcHJvZmlsZSIsInNpZCI6IjkzODIwMWNkLTVkYmMtNGI2ZC04YThjLTZhMTNhZWI5NzgwMSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiTWF4aW1vIFPDoW5jaGV6IiwicHJlZmVycmVkX3VzZXJuYW1lIjoiOTAwOTRAc2lzdGVtYXMuZnJjLnV0bi5lZHUuYXIiLCJnaXZlbl9uYW1lIjoiTWF4aW1vIiwiZmFtaWx5X25hbWUiOiJTw6FuY2hleiIsImVtYWlsIjoiOTAwOTRAc2lzdGVtYXMuZnJjLnV0bi5lZHUuYXIiLCJhdXRob3JpdGllcyI6WyJkZWZhdWx0LXJvbGVzLWJhY2tlbmQtdHBzIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsIkNMSUVOVEUiXX0.dyGdyUiesWBLmTuds1GuB5C7b69qsUZOWbCd8FpGOVb8I0L7Od2lidHVhoJ7gru3LMFZsmwxTnDsfOzX45NS-ylMvJ_GOyNuNLsnzrZfDyDF7QH4p7VEqWzYzYExUzVMuzigcIaorHx0NS9Y2H6MtegIYcJt1KP3KP1ghpvR6QqJ_YTTr_qcN_xjeijSm6I1z-gS-0iKnnpjxFtMq9k9Up4SC9XRz3639Aa0cp7s8XISPewNxJN82B51dqhD01POiXrJPL4aE86_mbCD6Q2R38se28stUylXodG-pMiDXf7_xAJ0WRxCbwJz_JkyfJKvNDg0ltitkpKixzKxplViBg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/api/estaciones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"estaciones"
+							]
+						},
+						"description": "Devuelve un listado de todas las estaciones"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear estacion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"string\",\r\n  \"latitud\": 0,\r\n  \"longitud\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/api/estaciones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"estaciones"
+							]
+						},
+						"description": "Permite la creacion de una nueva estacion."
+					},
+					"response": []
+				},
+				{
+					"name": "Get estacion mas cercana",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/api/estacionesclosest?latitud=999&longitud=999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"estacionesclosest"
+							],
+							"query": [
+								{
+									"key": "latitud",
+									"value": "999"
+								},
+								{
+									"key": "longitud",
+									"value": "999"
+								}
+							]
+						},
+						"description": "Devuelve la estacion mas cercana, dado una latitud y una longitud"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "alquileres",
+			"item": [
+				{
+					"name": "Alquileres",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/api/alquileres?costo=999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"alquileres"
+							],
+							"query": [
+								{
+									"key": "costo",
+									"value": "999"
+								}
+							]
+						},
+						"description": "Devuelve todos los alquileres, mayores al costo pasado por parametro"
+					},
+					"response": []
+				},
+				{
+					"name": "Iniciar alquiler",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idCliente\": 0,\r\n  \"idEstacion\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/api/alquileres",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"alquileres"
+							]
+						},
+						"description": "Permite la creacion de un nuevo alquiler."
+					},
+					"response": []
+				},
+				{
+					"name": "Finalizar alquiler",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idAlquiler\": 0,\r\n  \"idEstacion\": 0,\r\n  \"tipoMoneda\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/api/alquileres",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"alquileres"
+							]
+						},
+						"description": "Finaliza un alquiler, dado una estacion destino, y el tipo de moneda deseado."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "token request",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://labsys.frc.utn.edu.ar/aim/realms/backend-tps/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "tpi-scope",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "ZmiMMce6zh4xKHde1FFKbfkiThDyYpyn",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "cliente-tpi",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://labsys.frc.utn.edu.ar/aim/realms/backend-tps/protocol/openid-connect/auth",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "token tp backend",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
+}
